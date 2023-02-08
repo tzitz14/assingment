@@ -55,7 +55,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 </form>
 
 
- <!-- test -->
+ <!-- Table list with the data -->
  <div class="container">
 <h2>List of ads</h2>
 <table class="table table-striped">
@@ -125,9 +125,8 @@ else {
   echo '</div>';
   echo '</form>';
 }
-
-
 ?>
+
 </div>
 
 </tbody>
