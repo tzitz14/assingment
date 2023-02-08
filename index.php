@@ -17,7 +17,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 <!-- Echo the welcome message -->
 <div class="d-flex align-items-center">
   <p class="m-0">Welcome, <?php echo $_SESSION['username']; ?>! You are logged in.</p>
-  &nbsp; <a class="btn btn-secondary ml-auto" href="logout.php">Logout</a>
+  &nbsp; <a class="btn btn-primary ml-auto" href="logout.php">Logout</a>
 </div>
 
 <!-- Property Listing Form -->
@@ -55,9 +55,10 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 </form>
 
 
-
-<h2>List of registered entries</h2>
-<table>
+ <!-- test -->
+ <div class="container">
+<h2>List of ads</h2>
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Region</th>
@@ -68,7 +69,6 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
         </tr>
     </thead>
     <tbody>
-      
 <?php
 
 // Include the database connection file
@@ -86,7 +86,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["price"] . "</td>";
         echo "<td>" . $row["availability"] . "</td>";
         echo "<td>" . $row["square"] . "</td>";
-        echo "<td><a href='delete.php?id=" . $row["id"] . "'>Delete</a></td>";
+        echo "<td><a href='delete.php?id=" . $row["id"] . "' class='btn btn-primary'>Delete</a></td>";
         echo "</tr>";
     }
 } else {
@@ -96,7 +96,8 @@ if ($result->num_rows > 0) {
 // Close the database connection
 $conn->close();
 
-// Prompt to inform the user tha he deleted an entry
+
+// We declare to the user that he deleted an entry
 if (isset($_SESSION['message'])) {
   echo "<script>
   alert('" .$_SESSION['message']. ".');
@@ -110,10 +111,6 @@ if (isset($_SESSION['message'])) {
 }
 
 else {
-// 
-  echo "<center>";
-  echo 'You need to login in order to add a propperty.';
-  echo "</center>";
   echo '<form action="authenticate.php" method="post" class="container mt-5">';
   echo '<div class="form-group">';
   echo '<label for="username">Username:</label>';
@@ -126,10 +123,12 @@ else {
   echo '<div class="form-group mt-3">';
   echo '<input type="submit" class="btn btn-primary" value="Submit">';
   echo '</div>';
-  echo '</form>'; 
+  echo '</form>';
 }
 
+
 ?>
+</div>
 
 </tbody>
 </table>
