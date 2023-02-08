@@ -56,7 +56,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 
 
 
-<h2>List of ads</h2>
+<h2>List of registered entries</h2>
 <table>
     <thead>
         <tr>
